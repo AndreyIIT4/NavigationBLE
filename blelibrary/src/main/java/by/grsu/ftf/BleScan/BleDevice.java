@@ -1,4 +1,4 @@
-package by.grsu.ftf;
+package by.grsu.ftf.BleScan;
 
 import android.app.Service;
 import android.content.Intent;

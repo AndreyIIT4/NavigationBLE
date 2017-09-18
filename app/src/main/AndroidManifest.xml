@@ -22,7 +22,7 @@
         </activity>
 
         <service
-            android:name=".BleDevice"
+            android:name=".BleScan.BleDevice"
             android:enabled="true"
             android:exported="true" />
 
