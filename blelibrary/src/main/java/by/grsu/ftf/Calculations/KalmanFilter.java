@@ -1,4 +1,4 @@
-package by.grsu.ftf;
+package by.grsu.ftf.Calculations;
 
 /**
  * Created by Lenovo on 29.08.2017.

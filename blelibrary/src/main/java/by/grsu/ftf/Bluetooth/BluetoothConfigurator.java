@@ -1,4 +1,4 @@
-package by.grsu.ftf;
+package by.grsu.ftf.Bluetooth;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
