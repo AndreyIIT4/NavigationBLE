@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private final static int REQUEST_ENABLE_BT = 1;
     private static final int PERMISSION_REQUEST_COARSE_LOCATION = 1;
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Make sure we have access coarse location enabled, if not, prompt the user to enable it
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (this.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("This app needs location access");
@@ -77,15 +77,12 @@ public class MainActivity extends AppCompatActivity {
                 builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
                     @Override
                     public void onDismiss(DialogInterface dialog) {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_REQUEST_COARSE_LOCATION);
-                        }
                     }
                 });
                 builder.show();
             }
         }
-    }
 
     // Device scan callback.
     private ScanCallback leScanCallback = new ScanCallback() {
@@ -133,13 +130,11 @@ public class MainActivity extends AppCompatActivity {
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    btScanner.startScan(leScanCallback);
-                }
+
+                btScanner.startScan(leScanCallback);
             }
         });
     }
-
     public void stopScanning() {
         System.out.println("stopping scanning");
         peripheralTextView.append("Stopped Scanning");
