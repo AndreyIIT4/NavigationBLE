@@ -130,7 +130,6 @@ public class MainActivity extends AppCompatActivity {
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
-
                 btScanner.startScan(leScanCallback);
             }
         });
